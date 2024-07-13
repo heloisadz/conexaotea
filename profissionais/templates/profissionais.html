@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1>Lista de Profissionais</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Especialidade</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Descrição</th>
+                    <th><a href="/profissionais/createprofissionais/">+</a></th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                <tr>
+                    <td>{{ profissionais.id }}</td>
+                    <td>{{ profissionais.nome }}</td>
+                    <td>{{ profissionais.especialidade }}</td>
+                    <td>{{ profissionais.endereco }}</td>
+                    <td>{{ profissionais.telefone }}</td>
+                    <td>{{ profissionais.descricao }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
