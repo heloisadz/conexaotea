@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'especialistas',
     'atividades_interativas',
     'biblioteca',
+    'forum',
 ]
 
 MIDDLEWARE = [
