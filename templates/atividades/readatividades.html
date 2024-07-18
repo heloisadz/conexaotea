@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Atividades Interativas</h5>
+
+            <!-- Default Accordion -->
+            <div class="accordion" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Sensoriais
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" >
+                  <div class="accordion-body">
+                    {% for atividade in atividades %}
+                    {% if atividade.tipo == "Sensorial" %}
+                    <div class="card">
+                      <div class="card-body">
+                        <h1 class="card-title">{{ atividade.nome }}</h1>
+                        {{ atividade.descricao }}
+                      </div>
+                    </div>
+                            <!-- Adicione aqui qualquer outro dado do artigo que deseja exibir -->
+                            {% endif %}
+                            {% endfor %}
+                  </div>
+                </div>
+              </div>
+            
+              
+              </div>
+            </div><!-- End Default Accordion Example -->
+
+          </div>
+        </div>
+
+      </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-body">
+            <h1>Lista de Atividades</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Tipo</th>
+                        <th><a style="color: black; text-decoration: none;" href="/atividades/createatividade/">+</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for atividades in atividades %}
+                    <tr>
+                        <td>{{ atividades.id }}</td>
+                        <td>{{ atividades.nome }}</td>
+                        <td>{{ atividades.descricao }}</td>
+                        <td>{{ atividades.tipo }}</td>
+                        <td><a style="color: black; text-decoration: none;" href="/atividades/updateatividade/{{atividades.id}}">Editar</a>
+                        <td><a style="color: black; text-decoration: none;" href="/atividades/delete/confirm/{{atividades.id}}">Excluir</a>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

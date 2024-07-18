@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-body">
+            <h1>Lista Biblioteca</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Complexidade</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Categoria</th>
+                        <th><a style="color: black; text-decoration: none;" href="/biblioteca/createbiblioteca/">+</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for biblioteca in biblioteca %}
+                    <tr>
+                        <td>{{ biblioteca.id }}</td>
+                        <td>{{ biblioteca.complexidade }}</td>
+                        <td>{{ biblioteca.titilo }}</td>
+                        <td>{{ biblioteca.categoria }}</td>
+                        <td><a style="color: black; text-decoration: none;" href="/biblioteca/updatebiblioteca/{{biblioteca.id}}">Editar</a>
+                        <td><a style="color: black; text-decoration: none;" href="/biblioteca/delete/confirm/{{biblioteca.id}}">Excluir</a>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
