@@ -9,7 +9,11 @@
 </head>
 <body>
 
+
+
+
       <div class="col-lg-6">
+
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Atividades Interativas</h5>
@@ -38,8 +42,27 @@
                   </div>
                 </div>
               </div>
-            
-              
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Livros
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    {% for atividade in atividades %}
+                    {% if atividade.tipo == "Interativa" %}
+                    <div class="card">
+                      <div class="card-body">
+                        <h1 class="card-title">{{ atividade.nome }}</h1>
+                        {{ atividade.descricao }}
+                      </div>
+                    </div>
+                            <!-- Adicione aqui qualquer outro dado do artigo que deseja exibir -->
+                            {% endif %}
+                            {% endfor %}
+                  </div>
+                </div>
               </div>
             </div><!-- End Default Accordion Example -->
 
@@ -47,6 +70,7 @@
         </div>
 
       </div>
+      
 </body>
 </html>
 {% endblock %}
