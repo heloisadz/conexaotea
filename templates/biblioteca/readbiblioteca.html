@@ -10,7 +10,7 @@
 <body>
     <div class="card">
         <div class="card-body">
-            <h1>Lista Biblioteca</h1>
+            <h5 class="card-title">Biblioteca</h5>
             <table class="table">
                 <thead>
                     <tr>
@@ -18,6 +18,7 @@
                         <th scope="col">Complexidade</th>
                         <th scope="col">Titulo</th>
                         <th scope="col">Categoria</th>
+                        <th>Ação</th>
                         <th><a style="color: black; text-decoration: none;" href="/biblioteca/createbiblioteca/">+</a></th>
                     </tr>
                 </thead>
@@ -28,8 +29,8 @@
                         <td>{{ biblioteca.complexidade }}</td>
                         <td>{{ biblioteca.titulo }}</td>
                         <td>{{ biblioteca.categoria }}</td>
-                        <td><a style="color: black; text-decoration: none;" href="/biblioteca/updatebiblioteca/{{biblioteca.id}}">Editar</a>
-                        <td><a style="color: black; text-decoration: none;" href="/biblioteca/delete/confirm/{{biblioteca.id}}">Excluir</a>
+                        <td><a class="btn btn-primary" href="/biblioteca/updatebiblioteca/{{biblioteca.id}}">Editar</a>
+                        <td><a class="btn btn-danger" href="/biblioteca/delete/confirm/{{biblioteca.id}}">Excluir</a>
                     </tr>
                     {% endfor %}
                 </tbody>

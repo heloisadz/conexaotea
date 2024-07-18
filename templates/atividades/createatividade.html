@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card">
-    <div class="card-body">
-        <h1>Cadastrar Novo Especialista</h1>
+<section class="section">
+    <div class="row">
+      <div class="col-lg-6">
+  
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Cadastrar Atividade</h5>
         <form action="/atividades/createatividade/" method="POST">
             {% csrf_token %}
             {{ form.as_p }}

@@ -2,7 +2,7 @@
 {% block content %}
 <div class="card">
     <div class="card-body">
-        <h1>Lista de Profissionais</h1>
+        <h5 class="card-title">Especialistas</h5>
         <table class="table">
             <thead>
                 <tr>
@@ -28,7 +28,7 @@
                     <td>{{ especialistas.telefone }}</td>
                     <td>{{ especialistas.descricao }}</td>
                     <td><a class="btn btn-primary" href="/especialistas/updateespecialista/{{especialistas.id}}">Editar</a>
-                    <td><a class="btn btn-outline-danger" href="/especialistas/delete/confirm/{{especialistas.id}}">Excluir</a>
+                    <td><a class="btn btn-danger" href="/especialistas/delete/confirm/{{especialistas.id}}">Excluir</a>
                 </tr>
                 {% endfor %}
             </tbody>

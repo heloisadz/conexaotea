@@ -1,13 +1,64 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card">
-    <div class="card-body">
-        <h1>Cadastrar Na Biblioteca</h1>
-        <form action="/biblioteca/createbiblioteca/" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Salvar</button>
-        </form>
+
+
+
+<section class="section">
+  <div class="row">
+    <div class="col-lg-6">
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cadastrar na Biblioteca</h5>
+
+          <!-- General Form Elements -->
+          <form action="/biblioteca/createbiblioteca/" method="POST">{% csrf_token %}
+            <div class="row mb-3">
+              <label for="inputText" class="col-sm-2 col-form-label">Complexidade</label>
+              <div class="col-sm-10">
+                <select class="form-select" name="complexidade" aria-label="Default select example">
+                  <option selected=""></option>
+                  <option value="facil">fácil</option>
+                  <option value="medio">médio</option>
+                  <option value="dificil">difícil</option>
+                </select>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputText" class="col-sm-2 col-form-label">Título</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="titulo" maxlength="100" required="" id="id_titulo">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="inputText" class="col-sm-2 col-form-label">Categoria</label>
+              <div class="col-sm-10">
+                <select class="form-select" name="categoria" aria-label="Default select example">
+                  <option selected=""></option>
+                  <option value="Livro">Livro</option>
+                  <option value="Video">Video</option>
+                  <option value="Artigo">Artigo</option>
+                </select>
+              </div>
+            </div>
+      
+            <div class="row mb-3">
+              <label for="inputNumber" class="col-sm-2 col-form-label">File Upload</label>
+              <div class="col-sm-10">
+                <input class="form-control" type="file" id="formFile">
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </div>
+            </div>
+
+          </form><!-- End General Form Elements -->
+
+        </div>
+      </div>
+
     </div>
-</div>
 {% endblock %}
