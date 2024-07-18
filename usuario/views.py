@@ -60,4 +60,4 @@ def logout_view(request):
 #página inicial
 @login_required 
 def home(request):
-    return render(request, '/usuario/home.html')
+    return render(request, 'usuario/home.html')
