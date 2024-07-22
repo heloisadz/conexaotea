@@ -17,7 +17,7 @@ from django.contrib.auth.models import Group
 def createbiblioteca(request):
     if request.user.groups.filter(name='administrador').exists():
         if request.method == 'POST':
-            form = BibliotecaForm(request.POST)
+            form = BibliotecaForm(request.POST, request.FILES)  # Importante incluir request.FILES para lidar com arquivos
             if form.is_valid():
                 form.save()
                 return HttpResponseRedirect("/biblioteca/")
@@ -25,7 +25,7 @@ def createbiblioteca(request):
             form = BibliotecaForm()
         return render(request, 'biblioteca/createbiblioteca.html', {'form': form})
     else:
-        return render(request, {'message': 'Você não tem permissão para acessar esta página.'})
+        return render(request, 'error.html', {'message': 'Você não tem permissão para acessar esta página.'})
 
 @login_required
 def biblioteca(request):
@@ -42,7 +42,7 @@ def updatebiblioteca(request, id_biblioteca):
     if request.user.groups.filter(name='administrador').exists():
         biblioteca = get_object_or_404(Biblioteca, pk=id_biblioteca)
         if request.method == 'POST':
-            form = BibliotecaForm(request.POST, instance=biblioteca)
+            form = BibliotecaForm(request.POST, request.FILES, instance=biblioteca)  # Incluir request.FILES
             if form.is_valid():
                 form.save()
                 return HttpResponseRedirect("/biblioteca/")

@@ -61,40 +61,75 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                    <p class="text-center small">Enter your personal details to create account</p>
+                    <h5 class="card-title text-center pb-0 fs-4">Criar nova Conta</h5>
+                    <p class="text-center small">Digite suas informações para criar sua conta</p>
                   </div>
 
                   <form class="row g-3 needs-validation"  method="POST" action="{% url 'cadastro' %}" novalidate>{% csrf_token%}
                     <div class="col-12">
                       <label for="yourName" class="form-label">Nome</label>
                       <input type="text" name="first_name" class="form-control" id="yourName" required>
-                      <div class="invalid-feedback">Please, enter your name!</div>
+                      <div class="invalid-feedback">Por favor, digite seu nome!</div>
                     </div>
                     
                     <div class="col-12">
                         <label for="yourName" class="form-label">Sobrenome</label>
                         <input type="text" name="last_name" class="form-control" id="yourName" required>
-                        <div class="invalid-feedback">Please, enter your Last name!</div>
+                        <div class="invalid-feedback">Por favor, digite seu sobrenome!</div>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="yourName" class="form-label">Data de Nascimento</label>
+                        <input type="date" name="datanascimento" class="form-control" id="yourName" required>
+                        <div class="invalid-feedback">Por favor, digite seu nome!</div>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="yourName" class="form-label">CPF</label>
+                        <input type="text" name="CPF" class="form-control" id="yourName" required placeholder="XXX.XXX.XXX-XX">
+                        <div class="invalid-feedback">Por favor, digite seu nome!</div>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="yourName" class="form-label">Identificação</label>
+                        <select class="form-select" aria-label="Default select example" type="text" name="identificacao">
+                          <option selected=""></option>
+                          <option value="1">Responsável</option>
+                          <option value="2">Professor(a)</option>
+                          <option value="3">Estudante</option>
+                        </select>
+                        <div class="invalid-feedback">Por favor, digite seu nome!</div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="inputCity" class="form-label">Cidade</label>
+                        <input type="text" class="form-control" id="inputCity" name="cidade">
+                      </div>
+                      <div class="col-md-4">
+                        <label for="inputState" class="form-label">Estado</label>
+                        <select id="inputState" class="form-select" name="estado">
+                          <option selected="">Choose...</option>
+                          <option>...</option>
+                        </select>
                       </div>
 
                     <div class="col-12">
-                      <label for="yourEmail" class="form-label">Your Email</label>
+                      <label for="yourEmail" class="form-label">Seu Email</label>
                       <input type="email" name="email" class="form-control" id="yourEmail" required>
-                      <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                      <div class="invalid-feedback">Por favor, digite um endereço de email válido!</div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
+                      <label for="yourUsername" class="form-label">Usuário</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                         <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please choose a username.</div>
+                        <div class="invalid-feedback">Escolha seu nome de usuário.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">Password</label>
+                      <label for="yourPassword" class="form-label">Senha</label>
                       <input type="password" name="password" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
@@ -102,15 +137,15 @@
                     <div class="col-12">
                       <div class="form-check">
                         <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                        <div class="invalid-feedback">You must agree before submitting.</div>
+                        <label class="form-check-label" for="acceptTerms">Eu li e concordo com os <a href="#">Termos e Condições</a></label>
+                        <div class="invalid-feedback">Você precisa concordar antes de realizar seu cadastro.</div>
                       </div>
                     </div>
                     <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                      <button class="btn btn-primary w-100" type="submit">Criar Conta</button>
                     </div>
                     <div class="col-12">
-                      <p class="small mb-0">Already have an account? <a href="/usuario/login/">Log in</a></p>
+                      <p class="small mb-0">Já possui uma conta? <a href="/usuario/login/">Log in</a></p>
                     </div>
                   </form>
 

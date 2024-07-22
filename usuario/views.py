@@ -58,6 +58,6 @@ def logout_view(request):
     return redirect('login')
 
 #página inicial
-@login_required 
+@login_required
 def home(request):
     return render(request, 'usuario/home.html')

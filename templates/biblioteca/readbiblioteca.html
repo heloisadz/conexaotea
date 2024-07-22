@@ -18,6 +18,7 @@
                         <th scope="col">Complexidade</th>
                         <th scope="col">Titulo</th>
                         <th scope="col">Categoria</th>
+                        <th scope="col">Arquivo</th>
                         <th>Ação</th>
                         <th><a style="color: black; text-decoration: none;" href="/biblioteca/createbiblioteca/">+</a></th>
                     </tr>
@@ -29,6 +30,7 @@
                         <td>{{ biblioteca.complexidade }}</td>
                         <td>{{ biblioteca.titulo }}</td>
                         <td>{{ biblioteca.categoria }}</td>
+                        <td>{{ biblioteca.arquivos }}</td>
                         <td><a class="btn btn-primary" href="/biblioteca/updatebiblioteca/{{biblioteca.id}}">Editar</a>
                         <td><a class="btn btn-danger" href="/biblioteca/delete/confirm/{{biblioteca.id}}">Excluir</a>
                     </tr>
