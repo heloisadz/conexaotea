@@ -9,4 +9,5 @@ urlpatterns = [
     path('especialistas/', include('especialistas.urls')),
     path('atividades/', include('atividades_interativas.urls')),
     path('biblioteca/', include('biblioteca.urls')),
+    path('noticias/', include('noticias.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

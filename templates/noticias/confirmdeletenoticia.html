@@ -1,0 +1,29 @@
+<!-- news/templates/news/article_confirm_delete.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Exclusão</title>
+    <!-- Incluir aqui os links para os estilos CSS do Bootstrap, se necessário -->
+</head>
+<body>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Confirmar Exclusão</h5>
+        <p>Você tem certeza que deseja deletar "{{ noticia.titulo }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-danger" type="submit">Excluir</button>
+            <a class="btn btn-primary" href="{% url 'listanoticias' %}">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

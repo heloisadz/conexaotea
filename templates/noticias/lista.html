@@ -1,0 +1,55 @@
+<!-- news/templates/news/article_list.html -->
+<!-- news/templates/news/article_list.html -->
+{% extends 'base.html' %}
+{% block content %}
+
+
+        <div class="card">
+            <div class="card-body">
+
+    <h1>TEA Notícias</h1>
+
+    <a class="link-dark" href="{% url 'createnoticias' %}">Nova Notícia +</a>
+    <br><br>
+    
+    <ul>
+        <!-- Card with an image on top -->
+        {% for noticia in noticia %}
+        <div class="card">
+            {% if noticia.imagem %}
+            <img src="{{ noticia.imagem.url }}" alt="{{ noticias.titulo }}"  class="card-img-top" >
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title"> <a href="{% url 'detalhesnoticias' noticia.pk %}">{{ noticia.titulo }}</a></h5>
+              
+              <a class="btn btn-primary" href="{% url 'updatenoticias' noticia.pk %}">Editar</a>
+              <a class="btn btn-danger" href="{% url 'deletenoticias' noticia.pk %}">Excluir</a><br>
+            </div>
+          </div>
+        </li>
+        {% endfor %}<!-- End Card with an image on top -->
+          
+        <!--{% for noticia in noticia %}
+        <br>
+
+            <li>
+                
+                <a href="{% url 'detalhesnoticias' noticia.pk %}">{{ noticia.titulo }}</a><br>
+                {% if noticia.imagem %}
+                    <img src="{{ noticia.imagem.url }}" alt="{{ noticias.titulo }}" style="width: 100px;"><br>
+                {% endif %}
+                
+                <a class="btn btn-primary" href="{% url 'updatenoticias' noticia.pk %}">Editar</a>
+                <a class="btn btn-danger" href="{% url 'deletenoticias' noticia.pk %}">Excluir</a><br>
+        
+            </li>
+        {% endfor %}
+    </div>
+</div>
+    </ul>
+
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

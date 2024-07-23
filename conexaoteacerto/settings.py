@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'atividades_interativas',
     'biblioteca',
     'forum',
+    'noticias',
 ]
 
 MIDDLEWARE = [
