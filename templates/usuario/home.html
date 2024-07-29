@@ -37,7 +37,7 @@
                                 <img src="{{ noticia.imagem.url }}" class="d-block w-100" alt="{{ noticia.titulo }}">
                             {% endif %}
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>{{ noticia.titulo }}</h5>
+                                <h5><a style="color: white;" href="{% url 'detalhesnoticias' noticia.pk %}">{{ noticia.titulo }}</a></h5>
                             </div>
                         </div>
                     {% endfor %}
@@ -79,10 +79,9 @@
             <!-- Default Card -->
             <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">O Transtorno do Espectro Autista</h5>
+                  <h5 class="card-title">Nossos Recursos</h5>
                   <p class="card-text">
-                    Fique por dentro de atividades interativas 
-                    para realizar com pessoas diagnosticadas com o TEA
+                   
                     <nav>
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item"><a href="/biblioteca/"><i class="bi bi-bookmarks"></i>  Biblioteca de Recursos</a></li>
@@ -104,7 +103,8 @@
           <nav>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/usuario/quemsomos">Quem somos</a></li>
-              <li class="breadcrumb-item"><a href="#">Nosso objetivo</a></li>
+              <li class="breadcrumb-item"><a href="#"><i class="bi bi-instagram"></i></a></li>
+              <li class="breadcrumb-item"><a href="#"><i class="bi bi-github"></i></a></li>
             </ol>
           </nav>
        
