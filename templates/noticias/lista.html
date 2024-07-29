@@ -1,55 +1,37 @@
-<!-- news/templates/news/article_list.html -->
-<!-- news/templates/news/article_list.html -->
 {% extends 'base.html' %}
 {% block content %}
-
-
-        <div class="card">
-            <div class="card-body">
-
-    <h1>TEA Notícias</h1>
-
-    <a class="link-dark" href="{% url 'createnoticias' %}">Nova Notícia +</a>
-    <br><br>
-    
-    <ul>
-        <!-- Card with an image on top -->
-        {% for noticia in noticia %}
-        <div class="card">
-            {% if noticia.imagem %}
-            <img src="{{ noticia.imagem.url }}" alt="{{ noticias.titulo }}"  class="card-img-top" >
-            {% endif %}
-            <div class="card-body">
-              <h5 class="card-title"> <a href="{% url 'detalhesnoticias' noticia.pk %}">{{ noticia.titulo }}</a></h5>
-              
-              <a class="btn btn-primary" href="{% url 'updatenoticias' noticia.pk %}">Editar</a>
-              <a class="btn btn-danger" href="{% url 'deletenoticias' noticia.pk %}">Excluir</a><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEA Notícias</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">TEA Notícias</h5>
+            <a class="link-dark" href="{% url 'createnoticias' %}">Nova Notícia +</a>
+            <br><br>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                {% for noticia in noticia %}
+                <div class="col">
+                    <div class="card">
+                        {% if noticia.imagem %}
+                        <img src="{{ noticia.imagem.url }}" class="card-img-top" alt="{{ noticia.titulo }}">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{% url 'detalhesnoticias' noticia.pk %}">{{ noticia.titulo }}</a></h5>
+                            <p class="card-text">{{ noticia.resumo }}</p>
+                            <a href="{% url 'updatenoticias' noticia.pk %}" class="btn btn-primary">Editar</a>
+                            <a href="{% url 'deletenoticias' noticia.pk %}" class="btn btn-danger">Excluir</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-          </div>
-        </li>
-        {% endfor %}<!-- End Card with an image on top -->
-          
-        <!--{% for noticia in noticia %}
-        <br>
-
-            <li>
-                
-                <a href="{% url 'detalhesnoticias' noticia.pk %}">{{ noticia.titulo }}</a><br>
-                {% if noticia.imagem %}
-                    <img src="{{ noticia.imagem.url }}" alt="{{ noticias.titulo }}" style="width: 100px;"><br>
-                {% endif %}
-                
-                <a class="btn btn-primary" href="{% url 'updatenoticias' noticia.pk %}">Editar</a>
-                <a class="btn btn-danger" href="{% url 'deletenoticias' noticia.pk %}">Excluir</a><br>
-        
-            </li>
-        {% endfor %}
+        </div>
     </div>
-</div>
-    </ul>
-
-</div>
-</div>
-</div>
-</div>
+</body>
+</html>
 {% endblock %}

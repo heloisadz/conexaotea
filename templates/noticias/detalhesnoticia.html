@@ -1,46 +1,21 @@
-
 {% extends 'base.html' %}
 {% block content %}
-
-<!--<div class="card">
-    <div class="card-body">
-    <h2 class="card-title">{{ noticias.titulo }}</h2>
-
-    <h1>{{ noticia.titulo }}</h1>
-    {% if noticia.imagem %}
-        <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}">
-    {% endif %}
-
-    <p>{{ noticia.conteudo }}</p>
-    <p><em>Por {{ noticia.referencia }}</em></p>
-    <a class="btn btn-primary" href="{% url 'updatenoticias' noticia.pk %}">Editar</a>
-    <a class="btn btn-danger" href="{% url 'deletenoticias' noticia.pk %}">Excluir</a>
-    <br>
-    <a class="btn btn-secundary" href="{% url 'listanoticias' %}">Voltar à lista</a>
-</div>
-</div>-->
-
-
 <div class="card mb-3">
     <div class="row g-0">
-      <div class="col-md-4">
-        <h1>{{ noticia.titulo }}</h1>
+        <div class="col-md-4">
             {% if noticia.imagem %}
-        <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" class="img-fluid rounded-start" >
-        {% endif %}
-
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{ noticias.titulo }}</h5>
-          <p class="card-text"><p>{{ noticia.conteudo }}</p>
-          <p><em>Por {{ noticia.referencia }}</em></p>
-
-          <br>
-          <a class="btn btn-primary" href="{% url 'listanoticias' %}">Voltar à lista</a>
+            <img src="{{ noticia.imagem.url }}" alt="{{ noticia.titulo }}" class="img-fluid rounded-start">
+            {% endif %}
         </div>
-      </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ noticia.titulo }}</h5>
+                <p class="card-text">{{ noticia.conteudo }}</p>
+                <p><em>Por {{ noticia.referencia }}</em></p>
+                <br>
+                <a class="btn btn-primary" href="{% url 'listanoticias' %}">Voltar à lista</a>
+            </div>
+        </div>
     </div>
-  </div><!-- End Card with an image on left -->
-
-  {% endblock %}
+</div>
+{% endblock %}

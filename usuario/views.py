@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login as login_django
 from django.contrib.auth import logout
 from django.shortcuts import redirect
+from noticias.models import Noticias
 from usuario.models import Usuario
 
 #cadastro de usuário
@@ -60,4 +61,8 @@ def logout_view(request):
 #página inicial
 @login_required
 def home(request):
-    return render(request, 'usuario/home.html')
+    noticia = Noticias.objects.all()
+    return render(request, 'usuario/home.html', {'noticia': noticia})
+@login_required
+def quemsomos(request):
+    return render(request, 'usuario/quemsomos.html')

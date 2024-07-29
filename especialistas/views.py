@@ -51,7 +51,11 @@ def especialistas(request):
     especialistas = Especialista.objects.all()
     return render(request, 'especialistas/lista.html', {'especialistas': especialistas})
     #raise Http404("vC NÃO TEM permissão para acessar aqui.")
-
+@login_required
+def readespecialistas(request):
+    especialistas = Especialista.objects.all()
+    return render(request, 'especialistas/readespecialistas.html', {'especialistas': especialistas})
+ 
 
 @login_required
 def updateespecialista(request, id_especialista):

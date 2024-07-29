@@ -13,7 +13,7 @@
 
 <section class="section">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Editar Notícia</h5>
@@ -23,9 +23,9 @@
                             {{ form.as_p }}
                         </div>
                         <div class="d-grid">
-                            <button class="btn btn-success" type="submit">Editar</button>
+                            <button class="btn btn-primary" type="submit">Editar</button>
                             <br>
-                            <a class="btn btn-primary" href="{% url 'listanoticias' %}">Cancelar</a>
+                            <a class="btn btn-danger" href="{% url 'listanoticias' %}">Cancelar</a>
                         </div>
                     </form>
                 </div>

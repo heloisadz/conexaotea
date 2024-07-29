@@ -1,41 +1,115 @@
 {% extends 'base.html' %}
-{% load static %}
-
-{%block content%}
-
-
-<div class="card" >
-  <div class="card-body">
-    <br>
-    <h1>Seja bem vindo(a), {{user.username}} ! </h1>
-
-   <br>
-
-   <div class="card">
-    <img src="/static/assets/img/puzzle.jpg" class="card-img-top" alt="...">
-    <div class="card-img-overlay">
-      <h5 class="card-title">Transtorno do Espectro Autista</h5>
-      <p class="card-text">O Transtorno do Espectro Autista (TEA) é um conjunto de distúrbios do desenvolvimento psicomotor que impacta significativamente a capacidade de comunicação, interação interpessoal e comportamento dos indivíduos afetados.
-
-        Segundo a American Psychiatric Association (2000), o TEA é caracterizado por alterações qualitativas nas habilidades de comportamento social, dificuldades de comunicação e engajamento em comportamentos repetitivos e estereotipados. Este espectro inclui não apenas autistas, mas também pessoas com Síndrome de Asperger, que não apresentam atraso na fala, usam o pronome "eu" normalmente e geralmente não têm um déficit cognitivo severo.
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEA Notícias</title>
+    <style>
+        .carousel-item img {
+            height: 500px; /* Ajuste a altura conforme necessário */
+            object-fit: cover; /* Faz com que a imagem se ajuste ao tamanho sem distorcer */
+            width: 100%; /* Mantém a largura responsiva */
+        }
         
-        O TEA é amplamente reconhecido por sua diversidade e se divide em duas categorias principais: baixo funcionamento e alto funcionamento. No baixo funcionamento, há limitações cognitivas significativas e progresso clínico limitado. Já no alto funcionamento, os indivíduos podem apresentar características típicas do autismo, como atraso na fala, uso da terceira pessoa, dificuldade na interação social, falta de contato visual, dificuldade em identificar expressões faciais e expressar emoções. No entanto, esses indivíduos podem demonstrar notável progresso intelectual após a alfabetização (Leal & Nagata, 2017).
-        
-        Os sintomas do TEA geralmente se manifestam na infância e variam amplamente, incluindo anormalidades sensoriais e motoras, distúrbios do sono, hiperatividade, crises epilépticas, episódios de agressividade, bipolaridade, ansiedade, entre outras manifestações atípicas. É importante observar que esses sintomas requerem avaliação cuidadosa, pois podem ser confundidos com outras condições neurológicas e patologias congênitas.
-        
-        Em resumo, o TEA é uma condição complexa que afeta indivíduos de maneiras variadas, exigindo uma abordagem multifacetada para diagnóstico e intervenção adequados.</p>
+    </style>
+</head>
+<body>
+    <div class="pagetitle">
+        <h1>Seja bem vindo(a), {{user.username}} !</h1>
+      </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title"></h5>
+
+            <!-- Carrossel -->
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    {% for noticia in noticia %}
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+                    {% endfor %}
+                </div>
+                <div class="carousel-inner">
+                    {% for noticia in noticia %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            {% if noticia.imagem %}
+                                <img src="{{ noticia.imagem.url }}" class="d-block w-100" alt="{{ noticia.titulo }}">
+                            {% endif %}
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>{{ noticia.titulo }}</h5>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+            <!-- Fim do Carrossel -->
+
+        </div>
     </div>
-    
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Sobre nós</h5>
-      Nós somos estudantes do 6º semestre do curso técnico em Informática para Internet no Instituto Federal de Educação, Ciência e Tecnologia Baiano (IF Baiano) - Campus Guanambi. Ao longo dos últimos três anos, temos dedicado nossos esforços ao aprendizado e à aplicação prática de tecnologia. Nosso compromisso vai além das salas de aula: buscamos utilizar nosso conhecimento como um meio para promover melhorias sociais significativas.
-<br>
 
-Através deste sistema, nossa missão é impactar positivamente o aprendizado e o entendimento sobre o Transtorno do Espectro Autista (TEA). Acreditamos que a tecnologia pode desempenhar um papel crucial na educação e na conscientização, capacitando indivíduos e comunidades para uma compreensão mais inclusiva e empática.
-<br>
-Estamos entusiasmadas em contribuir para um futuro mais acessível e informado, onde o conhecimento e a compreensão sejam acessíveis a todos, independentemente de suas diferenças. Junte-se a nós nessa jornada para fazer a diferença.
-    </div>
-  </div>
-   {%endblock%}
+           <!-- Default Card -->
+           <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">O Transtorno do Espectro Autista</h5>
+              <p class="card-text">
+                O Transtorno do Espectro Autista (TEA) é um conjunto de distúrbios do desenvolvimento psicomotor que impacta significativamente a capacidade de comunicação, interação interpessoal e comportamento dos indivíduos afetados.
+
+                Segundo a American Psychiatric Association (2000), o TEA é caracterizado por alterações qualitativas nas habilidades de comportamento social, dificuldades de comunicação e engajamento em comportamentos repetitivos e estereotipados. Este espectro inclui não apenas autistas, mas também pessoas com Síndrome de Asperger, que não apresentam atraso na fala, usam o pronome "eu" normalmente e geralmente não têm um déficit cognitivo severo.
+                
+                O TEA é amplamente reconhecido por sua diversidade e se divide em duas categorias principais: baixo funcionamento e alto funcionamento. No baixo funcionamento, há limitações cognitivas significativas e progresso clínico limitado. Já no alto funcionamento, os indivíduos podem apresentar características típicas do autismo, como atraso na fala, uso da terceira pessoa, dificuldade na interação social, falta de contato visual, dificuldade em identificar expressões faciais e expressar emoções. No entanto, esses indivíduos podem demonstrar notável progresso intelectual após a alfabetização (Leal & Nagata, 2017).
+                
+                Os sintomas do TEA geralmente se manifestam na infância e variam amplamente, incluindo anormalidades sensoriais e motoras, distúrbios do sono, hiperatividade, crises epilépticas, episódios de agressividade, bipolaridade, ansiedade, entre outras manifestações atípicas. É importante observar que esses sintomas requerem avaliação cuidadosa, pois podem ser confundidos com outras condições neurológicas e patologias congênitas.
+                
+                Em resumo, o TEA é uma condição complexa que afeta indivíduos de maneiras variadas, exigindo uma abordagem multifacetada para diagnóstico e intervenção adequados.
+  
+              </p>
+            </div>
+          </div><!-- End Default Card -->
+      
+
+            <!-- Default Card -->
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">O Transtorno do Espectro Autista</h5>
+                  <p class="card-text">
+                    Fique por dentro de atividades interativas 
+                    para realizar com pessoas diagnosticadas com o TEA
+                    <nav>
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="/biblioteca/"><i class="bi bi-bookmarks"></i>  Biblioteca de Recursos</a></li>
+                          <li class="breadcrumb-item"><a href="/atividades/readatividades"><i class="bi bi-puzzle">  Atividades Interativas</i></a></li>
+                          <li class="breadcrumb-item"><a href="/especialistas/"><i class="bi bi-clipboard">  Especialistas no TEA</i></a></li>
+                          <li class="breadcrumb-item"><a href="/biblioteca/"><i class="bi bi-chat-dots">  Fórum de Discussão</i></a></li>
+                          <li class="breadcrumb-item"><a href="/biblioteca/"><i class="bi bi-newspaper">   Notícias</i></a></li>
+                        </ol>
+                      </nav>
+                  </p>
+                </div>
+              </div><!-- End Default Card -->
+          
+
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Sobre nós</h5>
+
+          <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/usuario/quemsomos">Quem somos</a></li>
+              <li class="breadcrumb-item"><a href="#">Nosso objetivo</a></li>
+            </ol>
+          </nav>
+       
+        </div>
+      </div>
+</body>
+</html>
+{% endblock %}
