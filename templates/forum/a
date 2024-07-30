@@ -1,0 +1,35 @@
+<table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">User Usuario</th>
+                    <th scope="col">corpo</th>
+                    <th scope="col">Data Criação</th>
+                    <th scope="col">Categoria</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th><a style="color: black; text-decoration: none;" href="/forum/createpost/">+</a></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>{{ forum.id }}</td>
+                    <td>{{ forum.user }}</td>
+                    <td>{{ forum.corpo }}</td>
+                    <td>{{ forum.datacriacao }}</td>
+                    <td>{{ forum.categoria }}</td>
+                    
+                    <td></td>
+                    <td><a class="btn btn-primary" href="/forum/updatepost/{{forum.id}}">Editar</a>
+                    <td><a class="btn btn-outline-danger" href="/forum/delete/confirm/{{forum.id}}">Excluir</a>
+                        <td><a style="color: black; text-decoration: none;" href="/comentario/{{forum.id}}">Visualizar</a></td>
+                         
+                </tr>
+               
+                <a style="color: black; text-decoration: none;" href="/comentario/createcomentario">Comentar</a>
+            </tbody>
+        </table>

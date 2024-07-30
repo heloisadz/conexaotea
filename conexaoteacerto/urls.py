@@ -10,4 +10,6 @@ urlpatterns = [
     path('atividades/', include('atividades_interativas.urls')),
     path('biblioteca/', include('biblioteca.urls')),
     path('noticias/', include('noticias.urls')),
+    path('forum/', include('forum.urls')),
+    path('comentario/', include('comentario.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

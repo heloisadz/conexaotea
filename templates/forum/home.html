@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+                  <!-- Default Card -->
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Fórum de Discussão</h5>
+              <p class="card-text">
+                Confira abaixo uma lista de profissionais especialistas no Transtorno do Espectro Autista:
+                <br>
+                <a href="/forum/createpost/" class="btn btn-primary">+ Criar Postagem</a>
+              </p>
+            </div>
+          </div><!-- End Default Card -->
+
+<div class="col-12">
+    <div class="card">
+    </div>
+            
+            {% for forum in forum %}
+            <div class="card">
+                <div class="card-header"><h5 class="card-title"> {{ forum.id }} | Post de {{ forum.user }}</h5>
+                </div>
+                    <div class="card-body">
+                        <br>
+                            <div id="text" style="text-align: justify;">{{ forum.corpo }} </div>
+                            <br>
+                                <div class="data">
+                                <p>Postado em: {{ forum.datacriacao }} <br>
+                                Categoria: <a href="/forum/categoria/">{{ forum.categoria }}</a></p>
+                                </div>
+                    </div>
+                    <div class="card-footer">
+                        <td> <a class="btn btn-outline-primary" href="/forum/updatepost/{{forum.id}}" >Editar</a></td>
+                       
+                        <td><a class="btn btn-outline-danger" href="/forum/delete/confirm/{{forum.id}}">Excluir</a>
+                            <td><a class="btn btn-outline-dark" href="/comentario/{{forum.id}}">Detalhar</a></td>
+                           
+                    </div>
+                </div>
+           
+            
+            {% endfor %}
+        </div>
+
+        
+   
+</div>
+
+
+
+<div class="col-lg-4"></div>
+{% endblock %}

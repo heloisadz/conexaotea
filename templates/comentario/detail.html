@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Post</title>
+</head>
+<body>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12">
+                <a href="/forum/" class="btn btn-primary mb-3">Voltar</a>
+                <h5 class="card-title">Detalhes do Post</h5>
+                
+                <!-- Card do Post do Fórum -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title">{{ forum.id }} | Post de {{ forum.user }}</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="text" style="text-align: justify;">{{ forum.corpo }}</div>
+                        <br>
+                        <div class="data mb-3">
+                            <p>Postado em: {{ forum.datacriacao }} <br>
+                            Categoria: <a href="/forum/categoria/">{{ forum.categoria }}</a></p>
+                        </div>
+                        <a href="/comentario/createcomentario/{{forum.id}}" class="btn btn-primary">+ Adicionar Comentário</a>
+                    </div>
+                </div>
+                
+                <!-- Comentários -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Comentários:</h5>
+                    </div>
+                    <div class="card-body">
+                        {% for comentario in comentario %}
+                        <div class="card mb-3">
+                            <div class="card-header">
+                                {{ comentario.id }} | Comentário de {{ comentario.user }}
+                            </div>
+                            <div class="card-body">
+                                <div id="text" style="text-align: justify;">{{ comentario.corpo }}</div>
+                                <div class="data">
+                                    <p>Postado em: {{ comentario.datacomentario }}</p>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a href="/comentario/updatecomentario/{{comentario.id}}" class="btn btn-outline-primary">Editar</a>
+                                <a href="/comentario/delete/confirm/{{comentario.id}}" class="btn btn-outline-danger">Excluir</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}
