@@ -1,36 +1,33 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Comentário</title>
-</head>
-<body>
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/usuario/home"><i class="bi bi-house-door"></i></a></li>
+    <li class="breadcrumb-item"><a href="/usuario/home">Home</a></li>
+  </ol>
+</nav>
+<div class="container mt-4">
+  <!-- Título da Página -->
+ 
 
-    <div class="container mt-3">
-        <!-- Título da Página -->
-        <h5 class="card-title">Editar Comentário</h1>
-
-        <!-- Formulário de Edição -->
-        <div class="card">
-            <div class="card-body">
-                <form action="/comentario/updatecomentario/{{comentario_id}}" method="POST">
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        {{ form.as_p }}
-                    </div>
-                    <div class="d-grid">
-                        <button type="submit" class="btn btn-primary">Salvar</button>
-                    </div>
-                </form>
-            </div>
+  <!-- Formulário de Edição -->
+  <div class="card">
+    <br>
+    <h2 class="mb-4"> Editar Comentário</h2>
+    <div class="card-body">
+      <form action="/comentario/updatecomentario/{{ comentario_id }}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          {{ form.as_p }}
         </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md">
+          <button type="submit" class="btn btn-primary me-md-2">Salvar</button>
+          <a class="btn btn-outline-danger" href="{% url 'forum' %}">Cancelar</a>
+        </div>
+      </form>
     </div>
-
-</body>
-</html>
+  </div>
+</div>
 
 {% endblock %}

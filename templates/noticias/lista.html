@@ -15,10 +15,28 @@
     </style>
 </head>
 <body>
+    <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/usuario/home"><i class="bi bi-house-door"></i></a></li>
+          <li class="breadcrumb-item"><a href="/usuario/home">Home</a></li>
+        </ol>
+      </nav>
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">TEA Notícias</h5>
-            <a class="link-dark" href="{% url 'createnoticias' %}">Nova Notícia +</a>
+            {% if user.is_authenticated %}
+        {% for group in user.groups.all %}
+            {% if group.name == "administrador" %}
+
+            <a class="btn btn-outline-primary" href="{% url 'createnoticias' %}">Nova Notícia +</a>
+  
+              {% else %}
+  
+              
+              {% endif %}
+            {% endfor %}
+        {%endif%}
+            
             <br><br>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 {% for noticia in noticia %}
@@ -30,8 +48,21 @@
                         <div class="card-body">
                             <h5 class="card-title"><a href="{% url 'detalhesnoticias' noticia.pk %}">{{ noticia.titulo }}</a></h5>
                             <p class="card-text">{{ noticia.resumo }}</p>
-                            <a href="{% url 'updatenoticias' noticia.pk %}" class="btn btn-primary">Editar</a>
-                            <a href="{% url 'deletenoticias' noticia.pk %}" class="btn btn-danger">Excluir</a>
+        
+        {% if user.is_authenticated %}
+        {% for group in user.groups.all %}
+            {% if group.name == "administrador" %}
+
+            <a href="{% url 'updatenoticias' noticia.pk %}" class="btn btn-primary">Editar</a>
+            <a href="{% url 'deletenoticias' noticia.pk %}" class="btn btn-danger">Excluir</a>
+  
+              {% else %}
+  
+              
+              {% endif %}
+            {% endfor %}
+        {%endif%}
+                            
                         </div>
                     </div>
                 </div>

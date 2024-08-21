@@ -1,70 +1,64 @@
 {% extends 'base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Biblioteca</title>
-</head>
-<body>
-
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/usuario/home"><i class="bi bi-house-door"></i></a></li>
+    <li class="breadcrumb-item"><a href="/usuario/home">Home</a></li>
+  </ol>
+</nav>
 <section class="section">
-    <div class="row">
-      <div class="col-lg-12">
-  
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Editar na Biblioteca</h5>
-  
             <!-- General Form Elements -->
-            <form action="/biblioteca/updatebiblioteca/{{id_biblioteca}}" method="POST">{% csrf_token %}
-                <div class="row mb-3">
-                    <label for="id_complexidade" class="col-sm-2 col-form-label">Complexidade</label>
-                    <div class="col-sm-10">
-                        <select class="form-select" name="complexidade" id="id_complexidade">
-                            <option value="facil">Fácil</option>
-                            <option value="medio">Médio</option>
-                            <option value="dificil">Difícil</option>
-                        </select>
-                    </div>
-                </div>
-              <div class="row mb-3">
-                <label for="inputText" class="col-sm-2 col-form-label">Título</label>
+            <form action="/biblioteca/updatebiblioteca/{{id_biblioteca}}" method="POST">
+              {% csrf_token %}
+              <div class="mb-3 row">
+                <label for="id_complexidade" class="col-sm-2 col-form-label">Complexidade</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" name="titulo" value="{{biblioteca.titulo}}" maxlength="100" required="" id="id_titulo">
+                  <select class="form-select" name="complexidade" id="id_complexidade">
+                    <option value="facil" {% if biblioteca.complexidade == 'facil' %}selected{% endif %}>Fácil</option>
+                    <option value="medio" {% if biblioteca.complexidade == 'medio' %}selected{% endif %}>Médio</option>
+                    <option value="dificil" {% if biblioteca.complexidade == 'dificil' %}selected{% endif %}>Difícil</option>
+                  </select>
                 </div>
               </div>
-              <div class="row mb-3">
+              <div class="mb-3 row">
+                <label for="id_titulo" class="col-sm-2 col-form-label">Título</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" name="titulo" value="{{biblioteca.titulo}}" maxlength="100" required id="id_titulo">
+                </div>
+              </div>
+              <div class="mb-3 row">
                 <label for="id_categoria" class="col-sm-2 col-form-label">Categoria</label>
                 <div class="col-sm-10">
-                    <select class="form-select" name="categoria" id="id_categoria">
-                        <option value="Livro">Livro</option>
-                        <option value="Video">Vídeo</option>
-                        <option value="Artigo">Artigo</option>
-                    </select>
+                  <select class="form-select" name="categoria" id="id_categoria">
+                    <option value="Livro" {% if biblioteca.categoria == 'Livro' %}selected{% endif %}>Livro</option>
+                    <option value="Video" {% if biblioteca.categoria == 'Video' %}selected{% endif %}>Vídeo</option>
+                    <option value="Artigo" {% if biblioteca.categoria == 'Artigo' %}selected{% endif %}>Artigo</option>
+                  </select>
                 </div>
-            </div>
-        
-              <div class="row mb-3">
-                <label for="inputNumber" class="col-sm-2 col-form-label">File Upload</label>
+              </div>
+              <div class="mb-3 row">
+                <label for="formFile" class="col-sm-2 col-form-label">File Upload</label>
                 <div class="col-sm-10">
                   <input class="form-control" type="file" id="formFile">
                 </div>
               </div>
-  
-              <div class="row mb-3">
-                <div class="col-sm-10">
+              <div class="row">
+                <div class="col-sm-10 offset-sm-2">
                   <button type="submit" class="btn btn-primary">Salvar</button>
+                  <a class="btn btn-outline-danger" href="{% url 'readbiblioteca' %}">Cancelar</a>
                 </div>
               </div>
-  
             </form><!-- End General Form Elements -->
-  
           </div>
         </div>
-  
       </div>
-</body>
-</html>
+    </div>
+  </div>
+</section>
 {% endblock %}

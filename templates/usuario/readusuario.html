@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Usuarios</h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Sobrenome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Identificação</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Data de Nascimento</th>
+                        <th scope="col">Cidade</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Email</th>
+                        <th>Ação</th>
+                        <th><a style="color: black; text-decoration: none;" href="/biblioteca/createbiblioteca/">+</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in usuario %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ usuario.CPF }}</td>
+                        <td>{{ usuario.identificacao }}</td>
+                        <td></td>
+                        <td>{{ usuario.datanascimento }}</td>
+                        <td>{{ usuario.estado }}</td>
+                        <td>{{ usuario.cidade }}</td>
+                        <td></td>
+                        <td><a class="btn btn-primary" href="/biblioteca/updatebiblioteca/{{biblioteca.id}}">Editar</a>
+                        <td><a class="btn btn-danger" href="/biblioteca/delete/confirm/{{biblioteca.id}}">Excluir</a>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

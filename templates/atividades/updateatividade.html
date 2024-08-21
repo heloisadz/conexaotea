@@ -1,35 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Atividade</title>
-
-</head>
-<body>
-
-    <section class="section">
-        <div class="row">
-          <div class="col-lg-6">
-      
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Editar Atividade</h5>
-    <form action="/atividades/updateatividade/{{id_atividade}}" method="POST"> 
-        <div class="mb-3 mt-3">
-    {% csrf_token %} <!-- cria um token que permite a inserção no bd apenas com determinado token e evita que informações que não estejam no form sejam salvas -->
-    {{form.as_p}}
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/usuario/home"><i class="bi bi-house-door"></i></a></li>
+    <li class="breadcrumb-item"><a href="/usuario/home">Home</a></li>
+  </ol>
+</nav>
+<section class="section">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Editar Atividade</h5>
+          <form action="/atividades/updateatividade/{{id_atividade}}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+              {{ form.as_p }}
+            </div>
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary">Editar</button>
+              <a class="btn btn-outline-danger" href="{% url 'readatividades' %}">Cancelar</a>
+            </div>
+          </form>
         </div>
-    <br>
-
-    <div class="d-grid">
-        <input type="submit" class="btn btn-primary" value="Editar">
+      </div>
     </div>
-    </form>
-
-</div>
-</body>
-</html>
+  </div>
+</section>
 {% endblock %}

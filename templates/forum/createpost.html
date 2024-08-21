@@ -1,13 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card">
-    <div class="card-body">
-        <h1>Criar post forum</h1>
-        <form action="/forum/createpost/" method="POST">
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/usuario/home"><i class="bi bi-house-door"></i></a></li>
+    <li class="breadcrumb-item"><a href="/usuario/home">Home</a></li>
+  </ol>
+</nav>
+
+<section class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title mb-4">Criar Post Fórum</h5>
+          <form action="/forum/createpost/" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Publicar</button>
-        </form>
+            <div class="form-group mb-3">
+              {{ form.as_p }}
+
+              <button type="submit" class="btn btn-primary">Publicar</button>
+              <a class="btn btn-outline-danger" href="{% url 'forum' %}">Cancelar</a>
+            </div>
+            
+            
+          </form>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
 {% endblock %}

@@ -1,39 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Notícia</title>
-    <!-- Incluir aqui os links para os estilos CSS do Bootstrap, se necessário -->
-</head>
-<body>
-
+<nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/usuario/home"><i class="bi bi-house-door"></i></a></li>
+      <li class="breadcrumb-item"><a href="/usuario/home">Home</a></li>
+    </ol>
+</nav>
 <section class="section">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Editar Notícia</h5>
-                    <form action="{% url 'updatenoticias' noticia.pk %}" method="post">
-                        {% csrf_token %}
-                        <div class="mb-3 mt-3">
-                            {{ form.as_p }}
-                        </div>
-                        <div class="d-grid">
-                            <button class="btn btn-primary" type="submit">Editar</button>
-                            <br>
-                            <a class="btn btn-danger" href="{% url 'listanoticias' %}">Cancelar</a>
-                        </div>
-                    </form>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">Editar Notícia</h5>
+                        <form action="{% url 'updatenoticias' noticia.pk %}" method="post">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                {{ form.as_p }}
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" type="submit">Editar</button>
+                                <a class="btn btn-outline-danger" href="{% url 'listanoticias' %}">Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-</body>
-</html>
 {% endblock %}

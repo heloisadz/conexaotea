@@ -1,13 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card">
-    <div class="card-body">
-        <h1>Comentário</h1>
-        <form action="{% url 'createcomentario' forum_id=forum.id %}" method="POST">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Publicar</button>
-        </form>
+<style>
+  .full-width-card {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+</style>
+
+<div class="container mt-5">
+    <div class="card full-width-card">
+        <div class="card-body">
+            <h5 class="card-title">Comentário</h5>
+            <form action="{% url 'createcomentario' forum_id=forum.id %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+               
+                    <button type="submit" class="btn btn-primary mb-2">Publicar</button>
+                    <a class="btn btn-outline-danger" href="{% url 'forum' %}">Cancelar</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}

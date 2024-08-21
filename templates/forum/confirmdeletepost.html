@@ -1,54 +1,41 @@
 {% extends 'base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <title>Document</title>
-</head>
-<body>
+<nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/usuario/home"><i class="bi bi-house-door"></i></a></li>
+      <li class="breadcrumb-item"><a href="/usuario/home">Home</a></li>
+    </ol>
+  </nav>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">DETALHES DE EXCLUSÃO</h5>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">User Usuario</th>
+                        <th scope="col">Corpo</th>
+                        <th scope="col">Data Criação</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Deletar mesmo?</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ forum.id }}</td>
+                        <td>{{ forum.user }}</td>
+                        <td>{{ forum.corpo }}</td>
+                        <td>{{ forum.datacriacao }}</td>
+                        <td>{{ forum.categoria }}</td>
+                        <td>
+                            <a class="btn btn-primary" href="/forum/deletepost/{{forum.id}}">Sim</a>
+                            <a class="btn btn-danger" href="/forum/">Não</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <div class="container mt-3">
-
-    <h1 class="title">DETALHES DE EXCLUSÃO</h1> 
-
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">User Usuario</th>
-                <th scope="col">corpo</th>
-                <th scope="col">Data Criação</th>
-                <th scope="col">Categoria</th>
-                
-                <th>Deletar mesmo?</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            <tr>
-                <td>{{ forum.id }}</td>
-                <td>{{ forum.user }}</td>
-                <td>{{ forum.corpo }}</td>
-                <td>{{ forum.datacriacao }}</td>
-                <td>{{ forum.categoria }}</td>
-                
-                
-                <td>
-                    <a class="btn btn-outline-danger" href="/forum/deletepost/{{forum.id}}">Sim</a>
-                    <a class="btn btn-outline-primary" href="/forum/">Não</a>
-                 </td>
-            </tr>
-            
-        </tbody>
-      </table>
-
-    
-      
-</body>
-</html>
 {% endblock %}

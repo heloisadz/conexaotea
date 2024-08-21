@@ -8,7 +8,12 @@
     <title>Detalhes do Post</title>
 </head>
 <body>
-
+    <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/usuario/home"><i class="bi bi-house-door"></i></a></li>
+          <li class="breadcrumb-item"><a href="/usuario/home">Home</a></li>
+        </ol>
+      </nav>
     <div class="container mt-3">
         <div class="row">
             <div class="col-12">
@@ -49,8 +54,21 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="/comentario/updatecomentario/{{comentario.id}}" class="btn btn-outline-primary">Editar</a>
-                                <a href="/comentario/delete/confirm/{{comentario.id}}" class="btn btn-outline-danger">Excluir</a>
+                                {% if user.is_authenticated %}
+                      {% for group in user.groups.all %}
+                          {% if group.name == "administrador" %}
+              
+                          <a href="/comentario/updatecomentario/{{comentario.id}}" class="btn btn-outline-primary">Editar</a>
+                          <a href="/comentario/delete/confirm/{{comentario.id}}" class="btn btn-outline-danger">Excluir</a>
+                        
+                
+                            {% else %}
+                
+                            
+                            {% endif %}
+                          {% endfor %}
+                      {%endif%}
+                                
                             </div>
                         </div>
                         {% endfor %}

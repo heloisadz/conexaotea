@@ -1,17 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
+
+<style>
+  .card {
+    margin-top: 20px;
+  }
+  .form-group > * {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+</style>
+
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/usuario/home"><i class="bi bi-house-door"></i></a></li>
+    <li class="breadcrumb-item"><a href="/usuario/home">Home</a></li>
+  </ol>
+</nav>
 <section class="section">
-    <div class="row">
-      <div class="col-lg-6">
-  
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Cadastrar Atividade</h5>
-        <form action="/atividades/createatividade/" method="POST">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Cadastrar Atividade</h5>
+          <form action="/atividades/createatividade/" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Salvar</button>
-        </form>
+            <div class="form-group">
+              {{ form.as_p }}
+
+              <button type="submit" class="btn btn-primary">Salvar</button><br>
+              <a class="btn btn-outline-danger" href="{% url 'readatividades' %}"> Cancelar</a>
+            </div>
+           
+              
+           
+          </form>
+        </div>
+      </div>
+
     </div>
-</div>
+  </div>
+</section>
 {% endblock %}

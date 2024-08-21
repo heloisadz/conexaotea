@@ -8,6 +8,13 @@
     <title>Biblioteca de Recursos</title>
 </head>
 <body>
+
+    <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/usuario/home"><i class="bi bi-house-door"></i></a></li>
+          <li class="breadcrumb-item"><a href="/usuario/home">Home</a></li>
+        </ol>
+      </nav>
         <!-- Default Card -->
         <div class="card">
             <div class="card-body">
@@ -80,9 +87,24 @@
                         {% endfor %}
                     </div>
                 </div>
+
+              
             </div>
         </div><!-- End Default Accordion Example -->
+        <br>
+        {% if user.is_authenticated %}
+        {% for group in user.groups.all %}
+            {% if group.name == "administrador" %}
 
+              <a class="btn btn-primary" href="{% url 'createbiblioteca' %}" >Cadastrar Recurso</a>
+              <a class="btn btn-outline-dark" href="{% url 'readbiblioteca' %}" >Lista de Recursos</a>
+  
+              {% else %}
+  
+              
+              {% endif %}
+            {% endfor %}
+        {%endif%}
     </div>
 </div>
 

@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-
+<nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/usuario/home"><i class="bi bi-house-door"></i></a></li>
+      <li class="breadcrumb-item"><a href="/usuario/home">Home</a></li>
+    </ol>
+  </nav>
                   <!-- Default Card -->
         <div class="card">
             <div class="card-body">
               <h5 class="card-title">Fórum de Discussão</h5>
               <p class="card-text">
-                Confira abaixo uma lista de profissionais especialistas no Transtorno do Espectro Autista:
-                <br>
+                Compartilhe suas experiências e recomendações sobre o TEA nos posts abaixo. Lembre-se de manter o respeito e a veracidade nas informações compartilhadas, para que a discussão seja produtiva e enriquecedora!
+                <br> <br>
                 <a href="/forum/createpost/" class="btn btn-primary">+ Criar Postagem</a>
               </p>
             </div>
@@ -31,9 +36,20 @@
                                 </div>
                     </div>
                     <div class="card-footer">
+                      {% if user.is_authenticated %}
+                      {% for group in user.groups.all %}
+                          {% if group.name == "administrador" %}
+              
                         <td> <a class="btn btn-outline-primary" href="/forum/updatepost/{{forum.id}}" >Editar</a></td>
-                       
                         <td><a class="btn btn-outline-danger" href="/forum/delete/confirm/{{forum.id}}">Excluir</a>
+                        
+                
+                            {% else %}
+                
+                            
+                            {% endif %}
+                          {% endfor %}
+                      {%endif%}
                             <td><a class="btn btn-outline-dark" href="/comentario/{{forum.id}}">Detalhar</a></td>
                            
                     </div>
